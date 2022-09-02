@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ListOfEmployees from "./ListOfEmployees";
+import OneEmployee from "./OneEmployee";
 import { Employee, EmployeeQuery } from "../../tools/types";
 import { getEmployees } from "../../tools/gateways";
 
 const Employees: React.FC = () => {
   const [employees, setEmployees] = useState<Array<Employee>>([]);
+  const [selectedEmployee, setSelectedEmployee] = useState<number | null>(null);
   const [query, setQuery] = useState<EmployeeQuery>({
     offset: 0,
     limit: 10,
@@ -25,7 +27,11 @@ const Employees: React.FC = () => {
 
   return (
     <main>
-      <ListOfEmployees employees={employees} />
+      <ListOfEmployees
+        employees={employees}
+        setSelectedEmployee={setSelectedEmployee}
+      />
+      <OneEmployee selectedEmployee={selectedEmployee} />
     </main>
   );
 };
