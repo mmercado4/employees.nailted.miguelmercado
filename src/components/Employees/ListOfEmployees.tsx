@@ -1,5 +1,6 @@
 import React from "react";
 import Pages from "./Pages";
+import Filter from "./Filter";
 import { Employee, EmployeeQuery } from "../../tools/types";
 
 interface Props {
@@ -18,16 +19,25 @@ const ListOfEmployees: React.FC<Props> = ({
   setQuery,
 }) => {
   const renderEmployeeRows = () => {
-    return employees.map((employee, i) => {
-      return (
-        <tr key={`row-${i}`} onClick={() => setSelectedEmployee(employee.id)}>
-          <td>{employee.id}</td>
-          <td>{employee.name}</td>
-          <td>{employee.surname}</td>
-          <td>{employee.email}</td>
-        </tr>
-      );
-    });
+    console.log(employees);
+    if (employees?.length > 0) {
+      return employees.map((employee, i) => {
+        return (
+          <tr key={`row-${i}`} onClick={() => setSelectedEmployee(employee.id)}>
+            <td>{query.offset + i + 1}</td>
+            <td>{employee.id}</td>
+            <td>{employee.name}</td>
+            <td>{employee.surname}</td>
+            <td>{employee.email}</td>
+          </tr>
+        );
+      });
+    }
+    return (
+      <tr>
+        <td colSpan={5}>No employees!</td>
+      </tr>
+    );
   };
 
   return (
@@ -36,6 +46,7 @@ const ListOfEmployees: React.FC<Props> = ({
         <thead>
           <tr>
             <th>#</th>
+            <th>ID</th>
             <th>Name</th>
             <th>Surname</th>
             <th>Email</th>
@@ -48,6 +59,7 @@ const ListOfEmployees: React.FC<Props> = ({
         query={query}
         setQuery={setQuery}
       />
+      <Filter query={query} setQuery={setQuery} />
     </div>
   );
 };
