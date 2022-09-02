@@ -1,4 +1,3 @@
-import Employees from "../components/Employees";
 import { API_URL } from "./constants";
 import { EmployeeQuery } from "./types";
 
@@ -8,6 +7,10 @@ const getEmployees = async (query: EmployeeQuery) => {
     .map((key) => `${key}=${query[key as keyof EmployeeQuery]}`)
     .join("&");
   return await fetcher(`/employees?${queryString}`, {});
+};
+
+const getOneEmployee = async (id: number) => {
+  return await fetcher(`/employees/${id}`, {});
 };
 
 const fetcher = async (path: String, opts: Object) => {
@@ -20,7 +23,7 @@ const fetcher = async (path: String, opts: Object) => {
   }
 };
 
-export { getEmployees };
+export { getEmployees, getOneEmployee };
 
 // let opts = {
 //   method: "POST",
