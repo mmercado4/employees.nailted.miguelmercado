@@ -1,12 +1,13 @@
+import Employees from "../components/Employees";
 import { API_URL } from "./constants";
+import { EmployeeQuery } from "./types";
 
-const getEmployees = async () => {
-  // let opts = {
-  //   method: "POST",
-  //   headers: { "content-type": "application/json" },
-  //   body: JSON.stringify(body),
-  // };
-  return await fetcher("/employees", {});
+const getEmployees = async (query: EmployeeQuery) => {
+  let queryString = Object.keys(query)
+    .filter((key) => query[key as keyof EmployeeQuery] !== "")
+    .map((key) => `${key}=${query[key as keyof EmployeeQuery]}`)
+    .join("&");
+  return await fetcher(`/employees?${queryString}`, {});
 };
 
 const fetcher = async (path: String, opts: Object) => {
@@ -20,3 +21,9 @@ const fetcher = async (path: String, opts: Object) => {
 };
 
 export { getEmployees };
+
+// let opts = {
+//   method: "POST",
+//   headers: { "content-type": "application/json" },
+//   body: JSON.stringify(body),
+// };

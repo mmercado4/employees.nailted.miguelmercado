@@ -7,3 +7,11 @@ export interface Employee {
   email: string;
   birthdate: string;
 }
+
+export interface EmployeeQuery {
+  offset: number;
+  limit: number;
+  email: string;
+  sort: string;
+  orderBy: string;
+}
