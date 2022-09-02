@@ -7,6 +7,7 @@ import { getEmployees } from "../../tools/gateways";
 const Employees: React.FC = () => {
   const [employees, setEmployees] = useState<Array<Employee>>([]);
   const [selectedEmployee, setSelectedEmployee] = useState<number | null>(null);
+  const [totalEmployees, setTotalEmployees] = useState<number | null>(null);
   const [query, setQuery] = useState<EmployeeQuery>({
     offset: 0,
     limit: 10,
@@ -19,7 +20,10 @@ const Employees: React.FC = () => {
     const call = async () => {
       const response = await getEmployees(query);
       console.log(response);
-      if (response) setEmployees(response.data);
+      if (response) {
+        setEmployees(response.data);
+        setTotalEmployees(response.total);
+      }
     };
 
     call();
@@ -30,6 +34,9 @@ const Employees: React.FC = () => {
       <ListOfEmployees
         employees={employees}
         setSelectedEmployee={setSelectedEmployee}
+        totalEmployees={totalEmployees}
+        query={query}
+        setQuery={setQuery}
       />
       <OneEmployee selectedEmployee={selectedEmployee} />
     </main>

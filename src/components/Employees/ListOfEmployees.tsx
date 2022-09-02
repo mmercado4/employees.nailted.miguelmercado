@@ -1,14 +1,21 @@
 import React from "react";
-import { Employee } from "../../tools/types";
+import Pages from "./Pages";
+import { Employee, EmployeeQuery } from "../../tools/types";
 
 interface Props {
   employees: Array<Employee>;
   setSelectedEmployee: Function;
+  totalEmployees: number | null;
+  query: EmployeeQuery;
+  setQuery: Function;
 }
 
 const ListOfEmployees: React.FC<Props> = ({
   employees,
   setSelectedEmployee,
+  totalEmployees,
+  query,
+  setQuery,
 }) => {
   const renderEmployeeRows = () => {
     return employees.map((employee, i) => {
@@ -36,6 +43,11 @@ const ListOfEmployees: React.FC<Props> = ({
         </thead>
         <tbody>{renderEmployeeRows()}</tbody>
       </table>
+      <Pages
+        totalEmployees={totalEmployees}
+        query={query}
+        setQuery={setQuery}
+      />
     </div>
   );
 };
