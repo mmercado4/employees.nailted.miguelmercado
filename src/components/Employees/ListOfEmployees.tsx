@@ -1,6 +1,5 @@
 import React from "react";
 import Pages from "./Pages";
-import Filter from "./Filter";
 import { Employee, EmployeeQuery } from "../../tools/types";
 
 interface Props {
@@ -60,7 +59,6 @@ const ListOfEmployees: React.FC<Props> = ({
         query={query}
         setQuery={setQuery}
       />
-      <Filter query={query} setQuery={setQuery} />
     </div>
   );
 };

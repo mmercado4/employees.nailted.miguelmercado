@@ -19,6 +19,7 @@ body {
 
 header {
   padding: 40px;
+  min-height: 40px; /*120*/
 }
 
 header h1 {
@@ -30,11 +31,15 @@ footer {
   padding: 15px;
   text-align: center;
   border-top: 1px solid gray;
+  color: var(--primary-color);
+  font-size: 0.9em;
+  min-height: 15px;
 }
 
 main {
   width: 90%;
   margin: 0 auto;
+  min-height: calc(100vh - 168px);
 }
 
 .employees-section {
@@ -113,4 +118,25 @@ select {
   font-family: var(--primary-font);
   border-radius: 4px;
   outline: none;
+}
+
+.filter {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.filter > input {
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid gray;
+  width: 40%;
+  background-color: var(--background-color);
+  font-family: var(--primary-font);
+  font-size: 1.1em;
+  outline: none;
+}
+
+.filter > input:focus {
+  transition: all 0.3s ease;
+  border-bottom: 2px solid var(--primary-color);
 }

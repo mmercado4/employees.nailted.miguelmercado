@@ -41,7 +41,11 @@ const Employees: React.FC = () => {
           query={query}
           setQuery={setQuery}
         />
-        <OneEmployee selectedEmployee={selectedEmployee} />
+        <OneEmployee
+          selectedEmployee={selectedEmployee}
+          query={query}
+          setQuery={setQuery}
+        />
       </section>
       <NewEmployeeForm query={query} setQuery={setQuery} />
     </main>

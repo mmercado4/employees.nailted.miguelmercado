@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Employee } from "../../tools/types";
+import Filter from "./Filter";
+import { Employee, EmployeeQuery } from "../../tools/types";
 import { getOneEmployee } from "../../tools/gateways";
 
 interface Props {
   selectedEmployee: number | null;
+  query: EmployeeQuery;
+  setQuery: Function;
 }
 
 const initialState: Employee = {
@@ -16,7 +19,11 @@ const initialState: Employee = {
   birthdate: "",
 };
 
-const OneEmployee: React.FC<Props> = ({ selectedEmployee }) => {
+const OneEmployee: React.FC<Props> = ({
+  selectedEmployee,
+  query,
+  setQuery,
+}) => {
   const [employeeInfo, setEmployeeInfo] = useState<Employee>(initialState);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -50,7 +57,17 @@ const OneEmployee: React.FC<Props> = ({ selectedEmployee }) => {
     }
   };
 
-  return <div className="right-container">{renderEmployeeInfo()}</div>;
+  return (
+    <div className="right-container">
+      <h2>Employee</h2>
+      <p>
+        Select one employee to see the details. In case you can not find it,
+        please search it by email.
+      </p>
+      <Filter query={query} setQuery={setQuery} />
+      {renderEmployeeInfo()}
+    </div>
+  );
 };
 
 export default OneEmployee;

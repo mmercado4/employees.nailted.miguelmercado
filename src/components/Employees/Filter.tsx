@@ -20,7 +20,6 @@ const Filter: React.FC<Props> = ({ query, setQuery }) => {
         value={query.email}
         onChange={handleChange}
       />
-      <p>Email: {query.email}</p>
     </div>
   );
 };
