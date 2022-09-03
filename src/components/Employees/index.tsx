@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ListOfEmployees from "./ListOfEmployees";
 import OneEmployee from "./OneEmployee";
+import NewEmployeeForm from "./NewEmployeeForm";
 import { Employee, EmployeeQuery } from "../../tools/types";
 import { getEmployees } from "../../tools/gateways";
 
@@ -39,6 +40,7 @@ const Employees: React.FC = () => {
         setQuery={setQuery}
       />
       <OneEmployee selectedEmployee={selectedEmployee} />
+      <NewEmployeeForm />
     </main>
   );
 };
