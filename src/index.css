@@ -140,3 +140,25 @@ select {
   transition: all 0.3s ease;
   border-bottom: 2px solid var(--primary-color);
 }
+
+.employee-details {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+}
+
+.employee-details > p {
+  margin: 10px 0;
+  width: 50%;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.employee-details > p > span {
+  color: black;
+}

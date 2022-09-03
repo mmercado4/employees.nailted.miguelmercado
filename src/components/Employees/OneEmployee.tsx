@@ -47,10 +47,11 @@ const OneEmployee: React.FC<Props> = ({
 
   const renderEmployeeInfo = () => {
     if (Object.keys(employeeInfo).length > 0) {
-      return Object.keys(employeeInfo).map((key, i) => {
+      return ["address", "email", "phone", "birthdate"].map((key, i) => {
         return (
           <p key={`data-${i}`}>
-            {key}: <span>{employeeInfo[key as keyof Employee]}</span>
+            {key[0].toUpperCase() + key.slice(1)}:{" "}
+            <span>{employeeInfo[key as keyof Employee]}</span>
           </p>
         );
       });
@@ -65,7 +66,15 @@ const OneEmployee: React.FC<Props> = ({
         please search it by email.
       </p>
       <Filter query={query} setQuery={setQuery} />
-      {renderEmployeeInfo()}
+      {!Object.values(employeeInfo).includes("") ? (
+        <h3>
+          {employeeInfo.id} - {employeeInfo.name} {employeeInfo.surname}
+        </h3>
+      ) : (
+        <h3>Selected employee</h3>
+      )}
+
+      <div className="employee-details">{renderEmployeeInfo()}</div>
     </div>
   );
 };
