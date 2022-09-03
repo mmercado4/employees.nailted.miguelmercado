@@ -42,13 +42,15 @@ const Employees: React.FC = () => {
           query={query}
           setQuery={setQuery}
         />
-        <OneEmployee
-          selectedEmployee={selectedEmployee}
-          query={query}
-          setQuery={setQuery}
-        />
+        <div className="right-container">
+          <OneEmployee
+            selectedEmployee={selectedEmployee}
+            query={query}
+            setQuery={setQuery}
+          />
+          <NewEmployeeForm query={query} setQuery={setQuery} />
+        </div>
       </section>
-      <NewEmployeeForm query={query} setQuery={setQuery} />
     </main>
   );
 };

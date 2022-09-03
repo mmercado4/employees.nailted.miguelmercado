@@ -60,7 +60,8 @@ const NewEmployeeForm: React.FC<Props> = ({ query, setQuery }) => {
   };
 
   return (
-    <div>
+    <div className="new-employee-form">
+      <h2>Add more employees</h2>
       <form>{renderInputs()}</form>
       <PrimaryButton text="Save" action={saveEmployee} />
     </div>

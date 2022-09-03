@@ -6,7 +6,11 @@ interface Props {
 }
 
 const PrimaryButton: React.FC<Props> = ({ text, action }) => {
-  return <button onClick={() => action()}>{text}</button>;
+  return (
+    <button className="primary-btn" onClick={() => action()}>
+      {text}
+    </button>
+  );
 };
 
 export default PrimaryButton;

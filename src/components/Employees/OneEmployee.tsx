@@ -59,7 +59,7 @@ const OneEmployee: React.FC<Props> = ({
   };
 
   return (
-    <div className="right-container">
+    <>
       <h2>Employee</h2>
       <p>
         Select one employee to see the details. In case you can not find it,
@@ -75,7 +75,7 @@ const OneEmployee: React.FC<Props> = ({
       )}
 
       <div className="employee-details">{renderEmployeeInfo()}</div>
-    </div>
+    </>
   );
 };
 
