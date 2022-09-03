@@ -9,7 +9,7 @@ interface Props {
 const Filter: React.FC<Props> = ({ query, setQuery }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let { value } = e.target as HTMLInputElement;
-    setQuery({ ...query, email: value });
+    setQuery({ ...query, email: value, offset: 0 });
   };
 
   return (

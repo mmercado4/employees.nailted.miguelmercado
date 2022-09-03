@@ -20,10 +20,11 @@ const Employees: React.FC = () => {
   useEffect(() => {
     const call = async () => {
       const response = await getEmployees(query);
-      console.log(response);
       if (response) {
         setEmployees(response.data);
         setTotalEmployees(response.total);
+      } else {
+        //TODO MANEJAR ERROR
       }
     };
 
@@ -40,7 +41,7 @@ const Employees: React.FC = () => {
         setQuery={setQuery}
       />
       <OneEmployee selectedEmployee={selectedEmployee} />
-      <NewEmployeeForm employees={employees} setEmployees={setEmployees} />
+      <NewEmployeeForm query={query} setQuery={setQuery} />
     </main>
   );
 };

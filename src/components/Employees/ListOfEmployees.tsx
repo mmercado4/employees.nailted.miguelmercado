@@ -19,7 +19,6 @@ const ListOfEmployees: React.FC<Props> = ({
   setQuery,
 }) => {
   const renderEmployeeRows = () => {
-    console.log(employees);
     if (employees?.length > 0) {
       return employees.map((employee, i) => {
         return (
@@ -39,6 +38,7 @@ const ListOfEmployees: React.FC<Props> = ({
       </tr>
     );
   };
+  //TODO ORDER BY NAME AND SURNAME
 
   return (
     <div className="left-container">

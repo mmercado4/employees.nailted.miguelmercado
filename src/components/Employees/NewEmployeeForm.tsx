@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import PrimaryButton from "../Templates/PrimaryButton";
 import Input from "../Templates/Input";
-import { EmployeeWithoutId, Employee } from "../../tools/types";
+import { EmployeeWithoutId, EmployeeQuery } from "../../tools/types";
 import { addEmployee } from "../../tools/gateways";
+import Moment from "moment";
 
 interface Props {
-  employees: Array<Employee>;
-  setEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
+  query: EmployeeQuery;
+  setQuery: Function;
 }
 
 const initialState: EmployeeWithoutId = {
@@ -18,7 +19,7 @@ const initialState: EmployeeWithoutId = {
   birthdate: "",
 };
 
-const NewEmployeeForm: React.FC<Props> = ({ employees, setEmployees }) => {
+const NewEmployeeForm: React.FC<Props> = ({ query, setQuery }) => {
   const [newEmployee, setNewEmployee] =
     useState<EmployeeWithoutId>(initialState);
 
@@ -28,9 +29,15 @@ const NewEmployeeForm: React.FC<Props> = ({ employees, setEmployees }) => {
   };
 
   const saveEmployee = async () => {
-    console.log("save");
-    let result = await addEmployee(newEmployee);
-    console.log(result);
+    let employee = { ...newEmployee };
+    employee.birthdate = Moment(newEmployee.birthdate).format("DD/MM/YYYY");
+    let result = await addEmployee(employee);
+    if (result.success) {
+      setQuery({ ...query, offset: 0 });
+      setNewEmployee({ ...initialState });
+    } else {
+      //TODO: MANEJAR ERROR
+    }
   };
 
   const renderInputs = () => {
