@@ -40,7 +40,7 @@ const Employees: React.FC = () => {
         setQuery={setQuery}
       />
       <OneEmployee selectedEmployee={selectedEmployee} />
-      <NewEmployeeForm />
+      <NewEmployeeForm employees={employees} setEmployees={setEmployees} />
     </main>
   );
 };

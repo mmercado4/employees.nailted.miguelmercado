@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import PrimaryButton from "../Templates/PrimaryButton";
 import Input from "../Templates/Input";
-import { EmployeeWithoutId } from "../../tools/types";
+import { EmployeeWithoutId, Employee } from "../../tools/types";
+import { addEmployee } from "../../tools/gateways";
+
+interface Props {
+  employees: Array<Employee>;
+  setEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
+}
 
 const initialState: EmployeeWithoutId = {
   name: "",
@@ -12,7 +18,7 @@ const initialState: EmployeeWithoutId = {
   birthdate: "",
 };
 
-const NewEmployeeForm: React.FC = () => {
+const NewEmployeeForm: React.FC<Props> = ({ employees, setEmployees }) => {
   const [newEmployee, setNewEmployee] =
     useState<EmployeeWithoutId>(initialState);
 
@@ -21,8 +27,10 @@ const NewEmployeeForm: React.FC = () => {
     setNewEmployee({ ...newEmployee, [name]: value });
   };
 
-  const saveEmployee = () => {
+  const saveEmployee = async () => {
     console.log("save");
+    let result = await addEmployee(newEmployee);
+    console.log(result);
   };
 
   const renderInputs = () => {
