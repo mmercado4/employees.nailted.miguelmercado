@@ -50,11 +50,7 @@ const OneEmployee: React.FC<Props> = ({ selectedEmployee }) => {
     }
   };
 
-  return (
-    <div className="right-container">
-      {loading ? <p>Cargando</p> : renderEmployeeInfo()}
-    </div>
-  );
+  return <div className="right-container">{renderEmployeeInfo()}</div>;
 };
 
 export default OneEmployee;

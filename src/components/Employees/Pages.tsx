@@ -34,22 +34,24 @@ const Pages: React.FC<Props> = ({ totalEmployees, query, setQuery }) => {
   };
 
   return (
-    <div className="pages">
-      {renderPages()}
-      <label htmlFor="limitOfEmployees">
-        Limit:
-        <select
-          name="limitOfEmployees"
-          id=""
-          onChange={(e) =>
-            setQuery({ ...query, limit: parseInt(e.target.value) })
-          }
-        >
-          <option value="10">10</option>
-          <option value="15">15</option>
-          <option value="20">20</option>
-        </select>
-      </label>
+    <div className="pages-container">
+      <div className="pages"> {renderPages()}</div>
+      <div className="limit-page">
+        <label htmlFor="limitOfEmployees">
+          Limit:
+          <select
+            name="limitOfEmployees"
+            id=""
+            onChange={(e) =>
+              setQuery({ ...query, limit: parseInt(e.target.value) })
+            }
+          >
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </label>
+      </div>
     </div>
   );
 };

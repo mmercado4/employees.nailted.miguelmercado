@@ -33,14 +33,16 @@ const Employees: React.FC = () => {
 
   return (
     <main>
-      <ListOfEmployees
-        employees={employees}
-        setSelectedEmployee={setSelectedEmployee}
-        totalEmployees={totalEmployees}
-        query={query}
-        setQuery={setQuery}
-      />
-      <OneEmployee selectedEmployee={selectedEmployee} />
+      <section className="employees-section">
+        <ListOfEmployees
+          employees={employees}
+          setSelectedEmployee={setSelectedEmployee}
+          totalEmployees={totalEmployees}
+          query={query}
+          setQuery={setQuery}
+        />
+        <OneEmployee selectedEmployee={selectedEmployee} />
+      </section>
       <NewEmployeeForm query={query} setQuery={setQuery} />
     </main>
   );

@@ -2,11 +2,115 @@
 
 :root {
   --primary-font: "Lato", sans-serif;
+  --primary-color: #179bf6;
+  --background-color: #f9f9fb;
 }
 
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: var(--primary-font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+
+header {
+  padding: 40px;
+}
+
+header h1 {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+footer {
+  padding: 15px;
+  text-align: center;
+  border-top: 1px solid gray;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.employees-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.employees-section .left-container,
+.employees-section .right-container {
+  width: 45%;
+}
+
+.left-container > table {
+  width: 100%;
+  border-collapse: collapse;
+  cursor: pointer;
+}
+
+.left-container > table > tbody > tr {
+  transition: all 0.3s ease;
+}
+
+.left-container > table > tbody > tr:hover {
+  background-color: #179bf6;
+  color: var(--background-color);
+  transition: all 0.3s ease;
+}
+
+.left-container > table > tbody > tr > td,
+.left-container > table > thead > tr > th {
+  padding: 7px;
+  text-align: center;
+}
+
+.left-container > table > tbody > tr > td {
+  border-top: 2px solid var(--primary-color);
+}
+
+.pages-container {
+  width: 100%;
+  position: relative;
+  margin-top: 20px;
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pages > p {
+  margin: 0 10px;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pages > p:hover,
+.pages > p.selected {
+  transition: all 0.3s ease;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.limit-page {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+select {
+  margin-left: 10px;
+  font-family: var(--primary-font);
+  border-radius: 4px;
+  outline: none;
 }

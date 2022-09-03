@@ -42,6 +42,7 @@ const ListOfEmployees: React.FC<Props> = ({
 
   return (
     <div className="left-container">
+      <h2>List of employees</h2>
       <table>
         <thead>
           <tr>
