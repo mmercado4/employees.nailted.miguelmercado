@@ -49,10 +49,10 @@ const OneEmployee: React.FC<Props> = ({
     if (Object.keys(employeeInfo).length > 0) {
       return ["address", "email", "phone", "birthdate"].map((key, i) => {
         return (
-          <p key={`data-${i}`}>
-            {key[0].toUpperCase() + key.slice(1)}:{" "}
-            <span>{employeeInfo[key as keyof Employee]}</span>
-          </p>
+          <div className="employee-detail">
+            <p key={`data-${i}`}>{key[0].toUpperCase() + key.slice(1)}: </p>
+            <p>{employeeInfo[key as keyof Employee]}</p>
+          </div>
         );
       });
     }

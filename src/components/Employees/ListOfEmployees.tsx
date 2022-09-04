@@ -1,6 +1,8 @@
 import React from "react";
 import Pages from "./Pages";
 import { Employee, EmployeeQuery } from "../../tools/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   employees: Array<Employee>;
@@ -37,7 +39,15 @@ const ListOfEmployees: React.FC<Props> = ({
       </tr>
     );
   };
-  //TODO ORDER BY NAME AND SURNAME
+
+  const sortBy = (property: string) => {
+    if (query.sort !== property) {
+      setQuery({ ...query, sort: property, orderBy: "desc" });
+    } else {
+      if (query.orderBy === "desc") setQuery({ ...query, orderBy: "asc" });
+      else setQuery({ ...query, sort: "", orderBy: "" });
+    }
+  };
 
   return (
     <div className="left-container">
@@ -47,8 +57,24 @@ const ListOfEmployees: React.FC<Props> = ({
           <tr>
             <th>#</th>
             <th>ID</th>
-            <th>Name</th>
-            <th>Surname</th>
+            <th onClick={() => sortBy("name")}>
+              Name{" "}
+              {query.sort === "name" && query.orderBy === "desc" && (
+                <FontAwesomeIcon icon={faArrowDown} />
+              )}
+              {query.sort === "name" && query.orderBy === "asc" && (
+                <FontAwesomeIcon icon={faArrowUp} />
+              )}
+            </th>
+            <th onClick={() => sortBy("surname")}>
+              Surname{" "}
+              {query.sort === "surname" && query.orderBy === "desc" && (
+                <FontAwesomeIcon icon={faArrowDown} />
+              )}
+              {query.sort === "surname" && query.orderBy === "asc" && (
+                <FontAwesomeIcon icon={faArrowUp} />
+              )}
+            </th>
             <th>Email</th>
           </tr>
         </thead>

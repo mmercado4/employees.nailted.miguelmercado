@@ -84,6 +84,10 @@ main {
   text-align: center;
 }
 
+.left-container > table > thead > tr > th > svg {
+  font-size: 0.7em;
+}
+
 .left-container > table > tbody > tr > td {
   border-top: 2px solid var(--primary-color);
 }
@@ -161,15 +165,27 @@ select {
   border-radius: 5px;
 }
 
-.employee-details > p {
-  margin: 10px 0;
+.employee-detail {
   width: 50%;
+}
+
+.employee-detail > p {
   font-weight: bold;
+  margin: 0;
+  width: 100%;
   color: var(--primary-color);
+  font-size: 0.8em;
+}
+
+.employee-detail > p:last-child {
+  color: black;
+  font-size: 1em;
+  margin: 10px 0;
 }
 
 .employee-details > p > span {
   color: black;
+  font-size: 1.2em;
 }
 
 .new-employee-form {
