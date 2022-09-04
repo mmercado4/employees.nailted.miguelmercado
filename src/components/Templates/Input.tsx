@@ -15,7 +15,6 @@ const Input: React.FC<Props> = ({ name, handleChange, type, state }) => {
 
   const handleBlur = () => {
     let isValid = validateInput(type, state[name as keyof EmployeeWithoutId]);
-    console.log("is valid " + name, isValid);
     if (!isValid)
       setError(INPUT_ERRORS[type.toUpperCase() as keyof InputErrors]);
     else if (error) setError("");
