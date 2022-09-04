@@ -30,4 +30,5 @@ export interface InputErrors {
   NUMBER: string;
   TEL: string;
   EMAIL: string;
+  DATE: string;
 }

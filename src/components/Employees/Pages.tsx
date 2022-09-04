@@ -15,7 +15,6 @@ const Pages: React.FC<Props> = ({ totalEmployees, query, setQuery }) => {
   const changePage = (page: number) => {
     let { limit } = query;
     let offset = limit * page;
-    console.log("offset", offset);
     setQuery({ ...query, offset: offset });
   };
 

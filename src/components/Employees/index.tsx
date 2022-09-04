@@ -21,7 +21,6 @@ const Employees: React.FC = () => {
     const call = async () => {
       const response = await getEmployees(query);
       if (response) {
-        //TODO MANEJO DE SUCCESS NO SUCCESS SI NO HAY, NO ES FALSE SUCCESS NO DEBERÍA AL MENOS
         setEmployees(response.data);
         setTotalEmployees(response.total);
       } else {

@@ -4,6 +4,7 @@ import Input from "../Templates/Input";
 import { EmployeeWithoutId, EmployeeQuery } from "../../tools/types";
 import { addEmployee } from "../../tools/gateways";
 import Moment from "moment";
+import Swal from "sweetalert2";
 
 interface Props {
   query: EmployeeQuery;
@@ -22,6 +23,7 @@ const initialState: EmployeeWithoutId = {
 const NewEmployeeForm: React.FC<Props> = ({ query, setQuery }) => {
   const [newEmployee, setNewEmployee] =
     useState<EmployeeWithoutId>(initialState);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let { name, value } = e.target as HTMLInputElement;
@@ -30,13 +32,26 @@ const NewEmployeeForm: React.FC<Props> = ({ query, setQuery }) => {
 
   const saveEmployee = async () => {
     let employee = { ...newEmployee };
-    employee.birthdate = Moment(newEmployee.birthdate).format("DD/MM/YYYY");
+    if (employee.birthdate)
+      employee.birthdate = Moment(newEmployee.birthdate).format("DD/MM/YYYY");
+    setLoading(true);
     let result = await addEmployee(employee);
     if (result.success) {
-      setQuery({ ...query, offset: 0 });
-      setNewEmployee({ ...initialState });
+      setTimeout(() => {
+        setQuery({ ...query, offset: 0 });
+        setNewEmployee({ ...initialState });
+        setLoading(false);
+        Swal.fire("Saved!", result.message, "success");
+      }, 1000);
     } else {
-      //TODO: MANEJAR ERROR
+      setTimeout(() => {
+        Swal.fire(
+          result.message,
+          result.errors.map((error: any) => error.msg).join("; "),
+          "error"
+        );
+        setLoading(false);
+      }, 700);
     }
   };
 
@@ -63,7 +78,7 @@ const NewEmployeeForm: React.FC<Props> = ({ query, setQuery }) => {
     <div className="new-employee-form">
       <h2>Add more employees</h2>
       <form>{renderInputs()}</form>
-      <PrimaryButton text="Save" action={saveEmployee} />
+      <PrimaryButton text={loading ? "Saving" : "Save"} action={saveEmployee} />
     </div>
   );
 };
