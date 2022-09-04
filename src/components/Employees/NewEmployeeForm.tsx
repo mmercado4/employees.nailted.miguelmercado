@@ -34,6 +34,12 @@ const NewEmployeeForm: React.FC<Props> = ({ query, setQuery }) => {
     let employee = { ...newEmployee };
     if (employee.birthdate)
       employee.birthdate = Moment(newEmployee.birthdate).format("DD/MM/YYYY");
+    Object.keys(employee).forEach(
+      (key) =>
+        (employee[key as keyof EmployeeWithoutId] = employee[
+          key as keyof EmployeeWithoutId
+        ].replace(",", ""))
+    );
     setLoading(true);
     let result = await addEmployee(employee);
     if (result.success) {
