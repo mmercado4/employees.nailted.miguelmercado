@@ -44,12 +44,14 @@ const NewEmployeeForm: React.FC<Props> = ({ query, setQuery }) => {
         Swal.fire("Saved!", result.message, "success");
       }, 1000);
     } else {
-      Swal.fire(
-        result.message,
-        result.errors.map((error: any) => error.msg).join("; "),
-        "error"
-      );
-      setLoading(false);
+      setTimeout(() => {
+        Swal.fire(
+          result.message,
+          result.errors.map((error: any) => error.msg).join("; "),
+          "error"
+        );
+        setLoading(false);
+      }, 700);
     }
   };
 
@@ -76,10 +78,7 @@ const NewEmployeeForm: React.FC<Props> = ({ query, setQuery }) => {
     <div className="new-employee-form">
       <h2>Add more employees</h2>
       <form>{renderInputs()}</form>
-      <PrimaryButton
-        text={loading ? "Saving..." : "Save"}
-        action={saveEmployee}
-      />
+      <PrimaryButton text={loading ? "Saving" : "Save"} action={saveEmployee} />
     </div>
   );
 };

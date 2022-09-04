@@ -232,7 +232,7 @@ select {
 
 .primary-btn {
   display: block;
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 10px 40px;
   border: 2px solid var(--primary-color);
   border-radius: 20px;
@@ -242,4 +242,19 @@ select {
   font-size: 1em;
   color: var(--background-color);
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 4px var(--background-color);
+  min-width: 150px;
+}
+
+.primary-btn:hover {
+  transform: translate(0px, -2px);
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.primary-btn:active {
+  transform: translate(0px, 0px);
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 6px var(--background-color);
 }
