@@ -1,13 +1,244 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap");
+
+:root {
+  --primary-font: "Lato", sans-serif;
+  --primary-color: #179bf6;
+  --background-color: #f9f9fb;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--primary-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+
+header {
+  padding: 40px;
+  min-height: 40px; /*120*/
+}
+
+header h1 {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+footer {
+  padding: 15px;
+  text-align: center;
+  border-top: 1px solid gray;
+  color: var(--primary-color);
+  font-size: 0.9em;
+  min-height: 15px;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  min-height: calc(100vh - 198px);
+}
+
+.employees-section .left-container,
+.employees-section .right-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .employees-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .employees-section .left-container,
+  .employees-section .right-container {
+    width: 45%;
+  }
+}
+
+.left-container > table {
+  width: 100%;
+  border-collapse: collapse;
+  cursor: pointer;
+}
+
+.left-container > table > tbody > tr {
+  transition: all 0.3s ease;
+}
+
+.left-container > table > tbody > tr:hover {
+  background-color: #179bf6;
+  color: var(--background-color);
+  transition: all 0.3s ease;
+}
+
+.left-container > table > tbody > tr > td,
+.left-container > table > thead > tr > th {
+  padding: 7px;
+  text-align: center;
+}
+
+.left-container > table > thead > tr > th > svg {
+  font-size: 0.7em;
+}
+
+.left-container > table > tbody > tr > td {
+  border-top: 2px solid var(--primary-color);
+}
+
+.pages-container {
+  width: 100%;
+  position: relative;
+  margin-top: 20px;
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pages > p {
+  margin: 0 10px;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pages > p:hover,
+.pages > p.selected {
+  transition: all 0.3s ease;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.limit-page {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+select {
+  margin-left: 10px;
+  font-family: var(--primary-font);
+  border-radius: 4px;
+  outline: none;
+}
+
+.filter {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.filter > input {
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid gray;
+  width: 40%;
+  background-color: var(--background-color);
+  font-family: var(--primary-font);
+  font-size: 1.1em;
+  outline: none;
+}
+
+.filter > input:focus {
+  transition: all 0.3s ease;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.employee-details {
+  max-width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+}
+
+.employee-detail {
+  width: 50%;
+}
+
+.employee-detail > p {
+  font-weight: bold;
+  margin: 0;
+  width: 100%;
+  color: var(--primary-color);
+  font-size: 0.8em;
+}
+
+.employee-detail > p:last-child {
+  color: black;
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+.employee-details > p > span {
+  color: black;
+  font-size: 1.2em;
+}
+
+.new-employee-form {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.new-employee-form > form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.new-employee-form > form > div {
+  width: 45%;
+}
+
+.new-employee-form > form > div > input {
+  width: 100%;
+  font-family: var(--primary-font);
+  font-size: 1em;
+  outline: none;
+  border: none;
+  padding: 10px 0px 10px 10px;
+  border-bottom: 2px solid gray;
+  transition: all 0.3s ease;
+  background-color: var(--background-color);
+}
+
+.new-employee-form > form > div > input:focus {
+  border-bottom: 2px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.input-error {
+  margin: 0;
+  min-height: 15px;
+  font-size: 12px;
+  color: red;
+}
+
+.primary-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 40px;
+  border: 2px solid var(--primary-color);
+  border-radius: 20px;
+  background-color: var(--primary-color);
+  transition: all 0.3s ease;
+  font-family: var(--primary-font);
+  font-size: 1em;
+  color: var(--background-color);
 }
