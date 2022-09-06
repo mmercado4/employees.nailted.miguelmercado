@@ -1,6 +1,6 @@
 import { InputErrors } from "./types";
 
-const API_URL: String = "http://localhost:3001";
+const API_URL: String = "https://api-nailted.herokuapp.com";
 
 const INPUT_ERRORS: InputErrors = {
   TEXT: "Should not be empty",
